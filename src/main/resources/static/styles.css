@@ -2,3 +2,8 @@ body {
  font-size: 18px;
  color: purple;
 }
+
+table, td, th{
+    border: 1px solid black;
+    background-color: #FFEFDF;
+}
