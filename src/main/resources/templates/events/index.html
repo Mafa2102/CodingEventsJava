@@ -10,17 +10,31 @@
 <p th:unless="${events} and ${events.size()}">No Events!</p>
 
 <table class="table table-striped">
+
+<!--    <thead>-->
+<!--    <tr><th>Name</th><th>Description</th><th>Address</th></tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--        <th:block th:each="event:${events}">-->
+<!--        <tr>-->
+<!--            <td th:text="${event.getKey()}">Name</td><td th:text="${event.getValue()}">Description</td>-->
+<!--            <td th:replace="fragments::address"></td>-->
+<!--        </tr>-->
+<!--        </th:block>-->
+<!--    </tbody>-->
+
     <thead>
-    <tr><th>Name</th><th>Description</th><th>Address</th></tr>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
     </thead>
-    <tbody>
-        <th:block th:each="event:${events}">
-        <tr>
-            <td th:text="${event.getKey()}">Name</td><td th:text="${event.getValue()}">Description</td>
-            <td th:replace="fragments::address"></td>
-        </tr>
-        </th:block>
-    </tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.id}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.description}"></td>
+    </tr>
 </table>
 
 </body>
