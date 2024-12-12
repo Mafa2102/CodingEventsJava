@@ -56,7 +56,7 @@ public class EventController {
 //        return "redirect:/events";
 //    }
 
-    //Model binding. It creats an object newEvent for us
+    //Model binding. It creats an object newEvent from Model Event
     @PostMapping("create")
     public String processCreateEventForm(@ModelAttribute Event newEvent) {
         EventData.add(newEvent);
@@ -81,6 +81,7 @@ public class EventController {
         return "redirect:/events";
     }
 
+    //creating a new class based on Id
     @GetMapping("edit/{eventId}")
     public String displayEditForm(Model model, @PathVariable int eventId){
         Event eventToEdit = EventData.getById(eventId);
