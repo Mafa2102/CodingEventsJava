@@ -30,4 +30,8 @@ public class EventData {
     public static void remove(int id) {
         events.remove(id);
     }
+
+//    public static void edit(int id) {
+//        events.edit(id);
+//    }
 }
