@@ -11,17 +11,6 @@
 
 <table class="table table-striped">
 
-<!--    <thead>-->
-<!--    <tr><th>Name</th><th>Description</th><th>Address</th></tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--        <th:block th:each="event:${events}">-->
-<!--        <tr>-->
-<!--            <td th:text="${event.getKey()}">Name</td><td th:text="${event.getValue()}">Description</td>-->
-<!--            <td th:replace="fragments::address"></td>-->
-<!--        </tr>-->
-<!--        </th:block>-->
-<!--    </tbody>-->
 
     <thead>
     <tr>
@@ -30,10 +19,7 @@
         <th>Description</th>
         <th>Type</th>
         <th>Location</th>
-        <th>Number of Attendees</th>
-        <th>Registration</th>
         <th>Contact Email</th>
-        <th>Edit</th>
     </tr>
     </thead>
     <tr th:each="event : ${events}">
@@ -42,10 +28,7 @@
         <td th:text="${event.description}"></td>
         <td th:text="${event.type.displayName}"></td>
         <td th:text="${event.location}"></td>
-        <td th:text="${event.numberOfAttendees}"></td>
-        <td th:text="${event.registration}"></td>
         <td th:text="${event.contactEmail}"></td>
-        <td><a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a></td>
     </tr>
 </table>
 

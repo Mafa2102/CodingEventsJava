@@ -9,12 +9,8 @@ import jakarta.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
-public class Event {
+public class Event extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private int id;
-    //private static int nextId = 1;
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -31,23 +27,15 @@ public class Event {
     @NotNull
     private String location;
 
-    @Positive(message="Number of attendees must be one or more.")
-    private int numberOfAttendees;
-
-    @AssertTrue(message="Please register")
-    boolean registration;
-
     private EventType type;
 
-    public Event(String name, String description, String contactEmail, String location,
-                 int numberOfAttendees, boolean registration, EventType type) {
+    public Event(String name, String description, String contactEmail, String location, EventType type) {
         this.name = name;
         this.description = description;
-        this.contactEmail = contactEmail;
-        this.location = location;
-        this.numberOfAttendees = numberOfAttendees;
-        this.registration = false;
         this.type = type;
+        this.location = location;
+        this.contactEmail = contactEmail;
+
     }
 
     public Event(){}
@@ -84,22 +72,6 @@ public class Event {
         this.location = location;
     }
 
-    public int getNumberOfAttendees() {
-        return numberOfAttendees;
-    }
-
-    public void setNumberOfAttendees(int numberOfAttendees) {
-        this.numberOfAttendees = numberOfAttendees;
-    }
-
-
-    public boolean isRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(boolean registration) {
-        this.registration = registration;
-    }
 
     public EventType getType() {
         return type;
@@ -109,9 +81,6 @@ public class Event {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
 
 
     @Override
@@ -119,16 +88,4 @@ public class Event {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
 }

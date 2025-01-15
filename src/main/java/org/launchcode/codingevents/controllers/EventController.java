@@ -21,8 +21,6 @@ import java.util.List;
 @RequestMapping("events")
 public class EventController {
 
-    //private static final HashMap<String, String> events = new HashMap<>();
-    //private static List<Event> events = new ArrayList<>();
 
     @Autowired
     private EventRepository eventRepository;
@@ -34,12 +32,6 @@ public class EventController {
         return "events/index";
     }
 
-//    //lives at /events/create
-//    @GetMapping("create")
-//    public String renderCreateEventForm() {
-//        return "events/create";
-//    }
-
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
@@ -48,22 +40,6 @@ public class EventController {
         return "events/create";
     }
 
-//    //lives at /events/create
-//    @PostMapping("create")
-//    public String createEvent(@RequestParam String eventName){
-//        events.add(eventName);
-//        return "redirect:/events";
-//    }
-
-    //lives at localhost:8080/events/create but for post
-    //this part for HashMap
-//    @PostMapping("create")
-//    public String processCreateEventForm(@RequestParam String eventName){
-//        events.put("Menteaship","A fun meetup for connecting with mentors");
-//        events.put("Code With Pride","A fun meetup sponsored by LaunchCode");
-//        events.put("Javascripty", "An imaginary meetup for Javascript developers");
-//        return "redirect:/events";
-//    }
 
     //Model binding. It creats an object newEvent from Model Event
     @PostMapping("create")
@@ -72,7 +48,6 @@ public class EventController {
 
         if(errors.hasErrors()){
             model.addAttribute("title", "Create Event");
-            //model.addAttribute("errorMsg", "Bad data");
             return "events/create";
         }
 
@@ -98,28 +73,7 @@ public class EventController {
         return "redirect:/events";
     }
 
-    //creating a new class based on Id
-//    @GetMapping("edit/{eventId}")
-////    public String displayEditForm(Model model, @PathVariable int eventId){
-////        Event eventToEdit = EventData.getById(eventId);
-////        model.addAttribute("event", eventToEdit);
-////        String title = "Edit Event " + eventToEdit.getName() + " (id=" + eventToEdit.getId() + ")";
-////        model.addAttribute("title", title );
-////        return "events/edit";
-////    }
 
-//    @PostMapping("edit")
-//    public String processEditForm(int eventId, String name, String description,
-//                                  String location, String contactEmail,
-//                                  int numberOfAttendees, boolean registration) {
-//        Event eventToEdit = EventData.getById(eventId);
-//        eventToEdit.setName(name);
-//        eventToEdit.setDescription(description);
-//        eventToEdit.setLocation(location);
-//        eventToEdit.setContactEmail(contactEmail);
-//        eventToEdit.setNumberOfAttendees(numberOfAttendees);
-//        eventToEdit.setRegistration(registration);
-//        return "redirect:/events";
-//    }
+
 
 }
