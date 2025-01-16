@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.*;
 
 import java.util.Objects;
@@ -27,12 +28,14 @@ public class Event extends AbstractEntity {
     @NotNull
     private String location;
 
-    private EventType type;
+    @ManyToOne
+    @NotNull(message = "Category is required")
+    private EventCategory eventCategory;
 
-    public Event(String name, String description, String contactEmail, String location, EventType type) {
+    public Event(String name, String description, String contactEmail, String location, EventCategory eventCategory) {
         this.name = name;
         this.description = description;
-        this.type = type;
+        this.eventCategory = eventCategory;
         this.location = location;
         this.contactEmail = contactEmail;
 
@@ -72,16 +75,13 @@ public class Event extends AbstractEntity {
         this.location = location;
     }
 
-
-    public EventType getType() {
-        return type;
+    public EventCategory getEventCategory() {
+        return eventCategory;
     }
 
-    public void setType(EventType type) {
-        this.type = type;
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
-
-
 
     @Override
     public String toString() {
