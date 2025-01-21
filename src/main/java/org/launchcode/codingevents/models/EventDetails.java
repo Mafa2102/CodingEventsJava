@@ -1,6 +1,7 @@
 package org.launchcode.codingevents.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,6 +20,9 @@ public class EventDetails extends AbstractEntity{
     @NotBlank(message="Location cannot be left blank.")
     @NotNull
     private String location;
+
+//    @OneToOne(mappedBy = "eventDetails")
+//    private Event event;
 
     public EventDetails(String description, String contactEmail, String location) {
         this.description = description;
